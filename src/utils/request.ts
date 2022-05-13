@@ -48,6 +48,11 @@ export async function apiRequest({
   version = "v1",
   params = {},
 }: IApiRequestParam): Promise<any> {
+  const config = {
+    url: `/api/${version}/${action}`,
+    method,
+    [method ? "data" : "params"]: params,
+  };
   try {
     return await request({
       url: `/api/${version}/${action}`,
